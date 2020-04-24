@@ -1,4 +1,5 @@
 import { state, MODE1, MODE2 } from "../state";
+import { router } from "../router";
 import { generatePage } from "../pages_functions/generatePage";
 import { changeNavLinksStyles } from "../styles_functions/changeNavLinksStyles";
 
@@ -25,10 +26,12 @@ switchCheckbox.addEventListener("click", function () {
 // Navigation links
 navList.addEventListener("click", function (e) {
   if (e.target.tagName === "A") {
-    state.page = e.target.dataset.category;
+    e.preventDefault();
     changeNavLinksStyles(e.target);
     hamburgerIcon.classList.toggle("hamburger_arrow");
     nav.classList.toggle("nav_active");
+    state.page = e.target.dataset.category;
+    router.changeRoute();
     generatePage(state.page);
   }
 });
