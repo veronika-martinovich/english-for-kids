@@ -3,13 +3,12 @@ import { generatePage } from "../js/pages_functions/generatePage";
 
 export const router = {
   initializeRoute: function() {
-    history.replaceState({page: `${state.page}`}, '', `${window.location.pathname}?=${state.page}`);
+    history.replaceState({page: `${state.page}`}, '', `${state.page}`);
   },
 
   changeRoute: function() {
-    history.pushState({page: `${state.page}`}, '', `${window.location.pathname}?=${state.page}`);
+    history.pushState({page: `${state.page}`}, '', `${state.page}`);
   }
-  
 }
 
 router.initializeRoute();
